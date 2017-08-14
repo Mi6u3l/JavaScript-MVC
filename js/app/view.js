@@ -5,7 +5,8 @@ define(['./graph'], (Graph) => {
         }
 
         convertNumberFormat(value) {
-            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            const valueToReplace = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            return this.model.type === 'revenue' ? `${valueToReplace}€` : valueToReplace;
         }
 
         render() {
