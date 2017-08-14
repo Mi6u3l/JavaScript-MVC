@@ -2,6 +2,7 @@ require('amd-loader');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = require('chai').expect;
+
 const SERVER = 'http://localhost:3000';
 chai.use(chaiHttp);
 
@@ -16,8 +17,8 @@ define(['../model'], (Model) => {
                 expect(model.type).to.equal('revenue');
             });
         });
-        describe('/GET device values', () => {
-            it('it should GET the device values', (done) => {
+        describe('Get device values', () => {
+            it('it should /GET the device values', (done) => {
                 chai.request(SERVER)
                     .get(`/${model.type}`)
                     .end((err, res) => {
@@ -25,6 +26,20 @@ define(['../model'], (Model) => {
                         expect(res.body.tablet).to.be.an('Number');
                         done();
                     });
+            });
+            it('it should calculate the device total value', () => {
+                model.smartPhoneValue = 120000;
+                model.tabletValue = 80000;
+                model.getTotal();
+                expect(model.total).to.equal(200000);
+            });
+            it('it should calculate the device percentages', () => {
+                model.smartPhoneValue = 120000;
+                model.tabletValue = 80000;
+                model.total = 200000;
+                model.getPercentages();
+                expect(model.smartPhonePercentage).to.equal(60);
+                expect(model.tabletPercentage).to.equal(40);
             });
         });
     });

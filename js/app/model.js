@@ -27,13 +27,6 @@ define(() => {
             this.smartPhonePercentage = (this.smartPhoneValue * 100) / this.total;
             this.tabletPercentage = (this.tabletValue * 100) / this.total;
         }
-
-        // initialize devices values
-        init() {
-            this.getDeviceValues();
-            this.getTotal();
-            this.getPercentages();
-        }
     }
     return Model;
 });

@@ -5,12 +5,6 @@ define(['./graph'], (Graph) => {
             this.model = model;
         }
 
-        // auxliary function for conver number on xx.xxx.xxx format
-        convertNumberFormat(value) {
-            const valueToReplace = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-            return this.model.type === 'revenue' ? `${valueToReplace}€` : valueToReplace;
-        }
-
         // render graphs and respective labels
         render() {
             const total = this.convertNumberFormat(this.model.total);
@@ -64,6 +58,12 @@ define(['./graph'], (Graph) => {
             labelSmartphoneValue.className = 'label-smartphone-value';
             labelSmartphoneValue.innerText = smartPhoneValue;
             labelSmartphonePercentage.appendChild(labelSmartphoneValue);
+        }
+
+        // auxliary function for conver number on xx.xxx.xxx format
+        convertNumberFormat(value) {
+            const valueToReplace = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            return this.model.type === 'revenue' ? `${valueToReplace}€` : valueToReplace;
         }
     }
     return View;

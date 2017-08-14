@@ -8,12 +8,13 @@ define(() => {
 
         // initialize received model
         initModel() {
-            this.model.init();
+            this.model.getDeviceValues();
+            this.model.getTotal();
+            this.model.getPercentages();
         }
 
         // call render from attached view
         renderView() {
-            this.initModel();
             this.view.render();
         }
     }

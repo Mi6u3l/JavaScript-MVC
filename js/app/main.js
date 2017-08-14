@@ -17,8 +17,13 @@ define(['./controller', './model', './view'],
         const impresionsController = new Controller(impresionsModel, impresionsView);
         const visitsController = new Controller(visitsModel, visitsView);
 
-        // initialize render
+        // initialize models and render views
+        revenueController.initModel();
         revenueController.renderView();
+
+        impresionsController.initModel();
         impresionsController.renderView();
+
+        visitsController.initModel();
         visitsController.renderView();
     });
