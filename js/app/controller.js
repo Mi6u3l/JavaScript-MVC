@@ -1,20 +1,17 @@
-define(['./impresions-model', './view'], (ImpresionsModel, View) => {
+define(() => {
     class Controller {
         constructor(model, view) {
             this.model = model;
             this.view = view;
         }
 
-        initValues() {
-            this.model.getDeviceValues();
-        } 
-
-        renderView() {
-            this.view.render();
+        initModel() {
+            this.model.init();
         }
 
-        init() {
-            console.log('hello');
+        renderView() {
+            this.initModel();
+            this.view.render();
         }
     }
     return Controller;

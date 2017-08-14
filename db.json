@@ -1,11 +1,11 @@
 {
-    "impresion": {
-        "tablet": 120000,
-        "smartPhone": 80000
+    "impresions": {
+        "tablet": 20000,
+        "smartPhone": 30000
     },
     "revenue": {
-        "tablet": 20000000,
-        "smartPhone": 30000000
+        "tablet": 120000,
+        "smartPhone": 80000
     },
     "visits": {
         "tablet": 480000000,
