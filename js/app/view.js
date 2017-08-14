@@ -4,15 +4,54 @@ define(['./graph'], (Graph) => {
             this.model = model;
         }
 
+        convertNumberFormat(value) {
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
         render() {
-        //    const graphsContainer = document.getElementById('graphsContainer');
-        //    graphsContainer.innerHTML =  `${this.model.type} `;
-        //    graphsContainer.innerHTML += `${this.model.tabletPercentage} ${this.model.smartPhonePercentage}`;
-        //    graphsContainer.innerHTML += ` ${this.model.total}`;
-        //    graphsContainer.innerHTML += ` ${this.model.smartPhoneColor} ${this.model.tabletColor}`;
-        //    graphsContainer.innerHTML += ` ${this.model.smartPhoneValue} ${this.model.tabletValue}`;
-            const graph = new Graph(this.model.type, this.model.smartPhonePercentage, this.model.total, this.model.tabletColor, this.model.smartPhoneColor);
+            const total = this.convertNumberFormat(this.model.total);
+            const tabletValue = this.convertNumberFormat(this.model.tabletValue);
+            const smartPhoneValue = this.convertNumberFormat(this.model.smartPhoneValue);
+
+            const graph = new Graph(this.model.type, this.model.smartPhonePercentage, total, this.model.tabletColor, this.model.smartPhoneColor);
             graph.init();
+
+            const graphContainer = document.getElementById(`graph${this.model.type}`);
+            const labelWrapper = document.createElement('div');
+            labelWrapper.className = 'label-wrapper';
+            graphContainer.appendChild(labelWrapper);
+
+            const labelTablet = document.createElement('div');
+            labelTablet.className = 'label-tablet';
+            labelTablet.innerText = 'Tablet';
+            labelTablet.setAttribute('style', `color:${this.model.tabletColor}`);
+            labelWrapper.appendChild(labelTablet);
+
+            const labelTabletPercentage = document.createElement('div');
+            labelTabletPercentage.className = 'label-percentage';
+            labelTabletPercentage.innerText = `${this.model.tabletPercentage}%`;
+            labelTablet.appendChild(labelTabletPercentage);
+
+            const labelTabletValue = document.createElement('span');
+            labelTabletValue.className = 'label-tablet-value';
+            labelTabletValue.innerText = tabletValue;
+            labelTabletPercentage.appendChild(labelTabletValue);
+
+            const labelSmartPhone = document.createElement('div');
+            labelSmartPhone.className = 'label-smartphone';
+            labelSmartPhone.innerText = 'Smartphone';
+            labelSmartPhone.setAttribute('style', `color:${this.model.smartPhoneColor}`);
+            labelWrapper.appendChild(labelSmartPhone);
+
+            const labelSmartphonePercentage = document.createElement('div');
+            labelSmartphonePercentage.className = 'label-percentage';
+            labelSmartphonePercentage.innerText = `${this.model.smartPhonePercentage}%`;
+            labelSmartPhone.appendChild(labelSmartphonePercentage);
+
+            const labelSmartphoneValue = document.createElement('span');
+            labelSmartphoneValue.className = 'label-smartphone-value';
+            labelSmartphoneValue.innerText = smartPhoneValue;
+            labelSmartphonePercentage.appendChild(labelSmartphoneValue);
         }
     }
     return View;

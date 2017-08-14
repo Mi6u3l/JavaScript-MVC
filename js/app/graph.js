@@ -19,7 +19,10 @@ define(['d3'], (d3) => {
                 .outerRadius(outerRadius)
                 .startAngle(0);
 
-            const svg = d3.select('#graphsContainer').append('graph').append('svg')
+            const graph = d3.select('#graphsContainer').append('graph')
+                .attr('id', `graph${this.modelName}`);
+
+            const svg = graph.append('svg')
                 .attr('class', 'graphs-container')
                 .attr('viewBox', `0 0 ${Math.min(width, height)} ${Math.min(width, height)}`)
                 .attr('preserveAspectRatio', 'xMinYMin')
@@ -28,17 +31,14 @@ define(['d3'], (d3) => {
 
             const title = svg.append('text')
                 .text(this.modelName)
-                .attr('text-anchor', 'middle')
                 .attr('class', 'graph-title')
-                .attr('fill','#a4a4a4')
                 .attr('dx', 2)
                 .attr('dy', -18);
 
+
             const total = svg.append('text')
                 .text(this.total)
-                .attr('text-anchor', 'middle')
                 .attr('class', 'graph-text')
-                .attr('fill', '#373737')
                 .attr('dx', 2)
                 .attr('dy', 10);
 
