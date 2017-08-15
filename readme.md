@@ -3,5 +3,6 @@
 <ol>
     <li>Install dependencies: npm install</li>
     <li>Run fake server: json-server --watch db.json</li>
+    <li>Open index.html</li>
     <li>Run tests: npm run test-model; npm run test-controller; npm run test-view</li>
 </ol>
