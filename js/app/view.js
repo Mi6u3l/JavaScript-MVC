@@ -11,7 +11,7 @@ define(['./graph'], (Graph) => {
             const tabletValue = this.convertNumberFormat(this.model.tabletValue);
             const smartPhoneValue = this.convertNumberFormat(this.model.smartPhoneValue);
 
-            //render graphic
+            // render graphic
             const graph = new Graph(this.model.type, this.model.smartPhonePercentage, total, this.model.tabletColor, this.model.smartPhoneColor);
             graph.init();
 

@@ -1,3 +1,6 @@
+//let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+//let xhr = new XMLHttpRequest();
+//define(['../lib/XMLHttpRequest'], (XMLHttpRequest) => {
 define(() => {
     const SERVICE_URL = 'http://localhost:3000';
     class Model {

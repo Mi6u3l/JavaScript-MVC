@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha js/app/test/model-tests.js"
+    "test-model": "mocha js/app/test/model-tests.js",
+    "test-view": "mocha js/app/test/view-tests.js",
+    "test-controller": "mocha js/app/test/controller-tests.js"
   },
   "author": "",
   "license": "ISC",

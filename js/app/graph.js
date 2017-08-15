@@ -1,4 +1,4 @@
-define(['d3'], (d3) => {
+define(['../lib/d3.min'], (d3) => {
     class Graph {
         // initialize graph class
         constructor(modelName, foregroundPercentage, total, backgroundColor, foregroundColor) {
